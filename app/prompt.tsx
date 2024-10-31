@@ -6,6 +6,8 @@
 // typescript相关依赖的版本是
 // "tsx": "^4.19.0",
 // "typescript": "^5.6.2"
+// nextjs相关依赖的版本是
+// "next": "14.2.10",
 // 基本的样式我们只使用tailwindcss来做，tailwindcss版本是
 // "tailwindcss": "^3.4.14",
 // 对于动画相关的设计，你可以使用以下依赖
