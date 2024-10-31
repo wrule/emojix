@@ -33,7 +33,7 @@ export default function App() {
   return (
     <main>
       <h1>My todos</h1>
-      <h1 className="text-3xl font-bold underline">
+      <h1 className="text-3xl font-bold bg-primary-500 underline">
         Hello world!
       </h1>
       <button onClick={createTodo}>+ new</button>
