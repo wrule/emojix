@@ -256,7 +256,7 @@ export default function HeroScene() {
           logarithmicDepthBuffer: true,
           premultipliedAlpha: false,
           clearColor: [0, 0, 0, 0]
-        }}
+        } as any}
       >
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={0.8} />
