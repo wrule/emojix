@@ -1,4 +1,5 @@
-// 我们正在开发一个nextjs的ssr应用
+// 我们正在开发一个nextjs react的ssr应用
+// 我们使用typescript（也就是.tsx）来编写页面和组件
 // 基本的样式我们只使用tailwindcss来做，tailwindcss版本是
 // "tailwindcss": "^3.4.14",
 // 对于动画相关的设计，你可以使用以下依赖
