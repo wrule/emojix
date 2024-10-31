@@ -2,6 +2,7 @@
 
 import { motion, useScroll, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useCallback } from 'react'
+import ConnectButton from './ConnectButton'
 
 export default function NavHeader() {
   const { scrollY } = useScroll()
@@ -93,13 +94,7 @@ export default function NavHeader() {
                 >
                   💡 About
                 </motion.button>
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-primary-500 hover:bg-primary-600 text-space-900 px-4 py-2 rounded-lg transition-colors"
-                >
-                  🦊 Connect Wallet
-                </motion.button>
+                <ConnectButton />
               </div>
             </nav>
           </div>
