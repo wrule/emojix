@@ -9,6 +9,8 @@
 // "framer-motion-3d": "^11.2.0",
 // "gsap": "^3.12.5",
 // "three": "^0.137.0",
+// 其他相关的三方依赖。你可以使用
+
 
 export default
 function AI() {
