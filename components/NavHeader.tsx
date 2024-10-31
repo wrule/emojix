@@ -10,22 +10,18 @@ export default function NavHeader() {
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
 
-  // 使用节流来优化滚动处理
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY
     const scrollingUp = currentScrollY < lastScrollY
     const scrollingDown = currentScrollY > lastScrollY
     const isAtTop = currentScrollY < 50
 
-    // 在顶部时总是显示
     if (isAtTop) {
       setIsVisible(true)
     } 
-    // 向上滚动时显示
     else if (scrollingUp && !isVisible) {
       setIsVisible(true)
     } 
-    // 向下滚动超过一定距离时隐藏
     else if (scrollingDown && isVisible && currentScrollY > 100) {
       setIsVisible(false)
     }
@@ -34,7 +30,6 @@ export default function NavHeader() {
   }, [lastScrollY, isVisible])
 
   useEffect(() => {
-    // 修改类型定义
     let timeoutId: ReturnType<typeof setTimeout> | undefined = undefined
 
     const throttledScroll = () => {
@@ -42,7 +37,7 @@ export default function NavHeader() {
 
       timeoutId = setTimeout(() => {
         handleScroll()
-        timeoutId = undefined // 使用 undefined 代替 null
+        timeoutId = undefined
       }, 100)
     }
 
@@ -53,6 +48,73 @@ export default function NavHeader() {
     }
   }, [handleScroll])
 
+  const emojiVariants = {
+    initial: {
+      rotate: 0,
+      y: 0
+    },
+    hover: {
+      rotate: [0, -10, 10, -10, 0],
+      y: [-1, 1, -1],
+      transition: {
+        rotate: {
+          duration: 0.4,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "reverse"
+        },
+        y: {
+          duration: 0.4,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "reverse"
+        }
+      }
+    }
+  }
+
+  const NavItem = ({ emoji, text }: { emoji: string; text: string }) => (
+    <motion.div 
+      whileHover="hover"
+      whileTap="tap"
+      initial="initial"
+      className="relative"
+    >
+      <motion.div 
+        className="px-4 py-2 rounded-full text-primary-300 
+                   overflow-hidden transform-gpu cursor-pointer group"
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          variants={{
+            hover: { opacity: 1 },
+            initial: { opacity: 0 }
+          }}
+          transition={{ duration: 0.2 }}
+          className="absolute inset-0 bg-gradient-to-r from-[#FFE14D] to-[#FFD700] transform-gpu"
+        />
+        
+        <div className="relative z-10">
+          <motion.span 
+            variants={emojiVariants}
+            className="inline-block"
+            style={{
+              backfaceVisibility: "hidden",
+              WebkitFontSmoothing: "antialiased",
+              transform: "translateZ(0)"
+            }}
+          >
+            {emoji}
+          </motion.span>
+          <span className="ml-2 font-medium transition-colors duration-200 
+                         group-hover:text-[#1a1b1f]">
+            {text}
+          </span>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -62,36 +124,25 @@ export default function NavHeader() {
           exit={{ y: -100, opacity: 0 }}
           transition={{ 
             duration: 0.3,
-            ease: 'easeInOut'
+            ease: [0.4, 0, 0.2, 1]
           }}
-          className="fixed top-0 left-0 right-0 z-50"
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitFontSmoothing: "antialiased",
+            transform: "translateZ(0)"
+          }}
+          className="fixed top-0 left-0 right-0 z-50 transform-gpu"
         >
           <div className="backdrop-blur-sm bg-space-800/80 transform-gpu">
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
               <Title />
               
-              <div className="flex items-center space-x-8">
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="text-primary-300 hover:text-primary-500 transition-colors"
-                >
-                  🏠 Home
-                </motion.button>
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="text-primary-300 hover:text-primary-500 transition-colors"
-                >
-                  📚 Docs
-                </motion.button>
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="text-primary-300 hover:text-primary-500 transition-colors"
-                >
-                  💡 About
-                </motion.button>
+              <div className="flex items-center space-x-4">
+                <NavItem emoji="🏠" text="Home" />
+                <NavItem emoji="💱" text="Swap" />
+                <NavItem emoji="🎯" text="GIF" />
+                <NavItem emoji="📚" text="Docs" />
+                <NavItem emoji="💡" text="About" />
                 <ConnectButton />
               </div>
             </nav>
