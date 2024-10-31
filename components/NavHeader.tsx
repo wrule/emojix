@@ -3,6 +3,7 @@
 import { motion, useScroll, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useCallback } from 'react'
 import ConnectButton from './ConnectButton'
+import Title from './Title'
 
 export default function NavHeader() {
   const { scrollY } = useScroll()
@@ -67,10 +68,7 @@ export default function NavHeader() {
         >
           <div className="backdrop-blur-sm bg-space-800/80 transform-gpu">
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <span className="text-2xl">🌟</span>
-                <span className="text-primary-500 font-bold text-xl">Web3 Project</span>
-              </div>
+              <Title />
               
               <div className="flex items-center space-x-8">
                 <motion.button 
