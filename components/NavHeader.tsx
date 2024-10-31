@@ -32,14 +32,15 @@ export default function NavHeader() {
   }, [lastScrollY, isVisible])
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout
+    // 修改类型定义
+    let timeoutId: ReturnType<typeof setTimeout> | undefined = undefined
 
     const throttledScroll = () => {
       if (timeoutId) return
 
       timeoutId = setTimeout(() => {
         handleScroll()
-        timeoutId = null
+        timeoutId = undefined // 使用 undefined 代替 null
       }, 100)
     }
 
