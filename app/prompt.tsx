@@ -10,7 +10,7 @@
 // "next": "14.2.10",
 // 基本的样式我们只使用tailwindcss来做，请不要写内联的css，不要加入<style>标签，不要引入其他文件内的css，我们只使用tailwindcss，tailwindcss版本是
 // "tailwindcss": "^3.4.14",
-// 除非是引号在html元素上，否则我们优先使用单引号
+// html模板上的attrs用双引号，其他优先使用单引号
 // 对于动画相关的设计，你可以使用以下依赖
 // "@gsap/react": "^2.1.1",
 // "@react-three/fiber": "^8.2.2",
