@@ -1,85 +1,47 @@
-import NavBar from '@/components/NavBar';
+import NavHeader from '@/components/NavHeader'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100">
-      <NavBar />
+    <main className="min-h-screen bg-gradient-to-br from-space-950 via-space-900 to-space-800">
+      <NavHeader />
       
-      {/* Hero Section with Padding for NavBar */}
-      <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto">
-          <h1 className="text-6xl font-bold text-primary-900 mb-6">
-            Welcome to the Future of Web3 🌟
-          </h1>
-          <p className="text-xl text-primary-800 max-w-2xl">
-            Revolutionizing the digital landscape with decentralized solutions and 
-            blockchain technology. Join us in building the next generation of the internet.
-          </p>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 bg-white/50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-primary-900 mb-12 text-center">
-            Key Features 💎
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { icon: '🔐', title: 'Secure', desc: 'Enterprise-grade security with advanced encryption' },
-              { icon: '⚡', title: 'Fast', desc: 'Lightning-fast transactions and minimal latency' },
-              { icon: '🌍', title: 'Scalable', desc: 'Built to scale globally with increasing demand' }
-            ].map((feature, i) => (
-              <div key={i} className="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <span className="text-4xl mb-4 block">{feature.icon}</span>
-                <h3 className="text-xl font-bold text-primary-800 mb-2">{feature.title}</h3>
-                <p className="text-primary-700">{feature.desc}</p>
-              </div>
-            ))}
+      <div className="pt-16"> {/* 为固定定位的header留出空间 */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center">
+            <h1 className="text-5xl font-bold text-primary-500 mb-6">
+              Welcome to the Future 🚀
+            </h1>
+            <p className="text-xl text-primary-100 max-w-2xl mx-auto">
+              Discover the next generation of Web3 experiences. 
+              Built with innovation, powered by community.
+            </p>
           </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          
+          {/* 示例内容块 */}
+          <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { value: '100K+', label: 'Active Users' },
-              { value: '$10M+', label: 'Total Value Locked' },
-              { value: '99.9%', label: 'Uptime' },
-              { value: '150+', label: 'Countries' }
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-4xl font-bold text-primary-700 mb-2">{stat.value}</div>
-                <div className="text-primary-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* More content for scroll testing */}
-      <section className="py-20 bg-white/50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-primary-900 mb-12">
-            Latest Updates 📢
-          </h2>
-          <div className="space-y-8">
-            {[1, 2, 3, 4].map((_, i) => (
-              <div key={i} className="p-6 bg-white rounded-xl shadow-md">
-                <h3 className="text-xl font-bold text-primary-800 mb-2">
-                  Major Protocol Update {i + 1}.0
+              { icon: '💎', title: 'Secure', desc: 'Built with the latest security standards' },
+              { icon: '⚡', title: 'Fast', desc: 'Lightning-fast transactions and responses' },
+              { icon: '🌐', title: 'Decentralized', desc: 'Truly owned by the community' }
+            ].map((item, i) => (
+              <div 
+                key={i}
+                className="p-6 rounded-xl bg-space-800/50 backdrop-blur-sm
+                  border border-space-700 hover:border-primary-500
+                  transition-all duration-300 hover:transform hover:-translate-y-1"
+              >
+                <span className="text-4xl">{item.icon}</span>
+                <h3 className="text-xl font-bold text-primary-400 mt-4">
+                  {item.title}
                 </h3>
-                <p className="text-primary-700">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do 
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                <p className="mt-2 text-primary-200">
+                  {item.desc}
                 </p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
-  );
+  )
 }
