@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 const emojis = [
-  '🦊', '🐱', '🐼', '🐨', '🐯', '🦁', '🐸', '🐵',  // 可爱动物
-  '🎨', '🎭', '🎪', '🎯', '🎲', '🎸', '🎺', '🎵',  // 艺术娱乐
-  '🌈', '🌸', '🌺', '🌻', '🍀', '🌹', '🌷', '🌼',  // 自然植物
-  '🎈', '🎉', '🎊', '🎁', '🎀', '🎗️', '🏆', '👑',  // 庆祝奖励
-  '💎', '💍', '💝', '💖', '💗', '💓', '💞', '💕',  // 珠宝爱心
-  '🚀', '✈️', '🛸', '🎡', '🎢', '🌠', '🎆', '🎇'   // 交通游乐
+  '🦊', '🐱', '🐼', '🐨', '🐯', '🦁', '🐸', '🐵',  
+  '🎨', '🎭', '🎪', '🎯', '🎲', '🎸', '🎺', '🎵',  
+  '🌈', '🌸', '🌺', '🌻', '🍀', '🌹', '🌷', '🌼',  
+  '🎈', '🎉', '🎊', '🎁', '🎀', '🎗️', '🏆', '👑',  
+  '💎', '💍', '💝', '💖', '💗', '💓', '💞', '💕',  
+  '🚀', '✈️', '🛸', '🎡', '🎢', '🌠', '🎆', '🎇'   
 ]
 
 const FloatingEmoji = () => {
@@ -37,10 +37,7 @@ const FloatingEmoji = () => {
         duration: 2,
         ease: "linear"
       }}
-      className="absolute text-xl pointer-events-none text-[#FFE071]"
-      style={{
-        filter: 'drop-shadow(0 0 8px rgba(255, 224, 113, 0.5))'
-      }}
+      className="absolute text-xl pointer-events-none"
     >
       {emojis[Math.floor(Math.random() * emojis.length)]}
     </motion.div>
@@ -49,6 +46,7 @@ const FloatingEmoji = () => {
 
 export default function ConnectButton() {
   const [emojiKeys, setEmojiKeys] = useState<number[]>([])
+  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
     const createEmojis = () => {
@@ -89,7 +87,8 @@ export default function ConnectButton() {
             {(() => {
               if (!connected) {
                 return (
-                  <div className="relative">
+                  <div className="relative group">
+                    <div className="absolute -inset-[25px] bg-gradient-to-r from-[#FFB800] to-[#FFEE94] opacity-0 group-hover:opacity-20 blur-xl rounded-full transition-opacity duration-500" />
                     <motion.button
                       onClick={openConnectModal}
                       whileHover={{ scale: 1.05 }}
@@ -97,7 +96,6 @@ export default function ConnectButton() {
                       className="relative px-6 py-2.5 rounded-xl w-[160px] whitespace-nowrap overflow-hidden"
                       style={{
                         background: 'linear-gradient(135deg, #FFB800 0%, #FFEE94 100%)',
-                        boxShadow: '0 0 10px rgba(255, 224, 113, 0.3)'
                       }}
                     >
                       <span className="relative z-10 font-medium text-[#1F2937]">Connect Wallet</span>
