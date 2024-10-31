@@ -2,7 +2,7 @@
 // react相关依赖的版本是
 // "react": "^18",
 // "react-dom": "^18",
-// 我们使用typescript（也就是.tsx）来编写页面和组件
+// 我们使用typescript（也就是.tsx）来编写页面和组件，我们支持es2021以上
 // typescript相关依赖的版本是
 // "tsx": "^4.19.0",
 // "typescript": "^5.6.2"
