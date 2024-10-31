@@ -6,7 +6,8 @@
 // typescript相关依赖的版本是
 // "tsx": "^4.19.0",
 // "typescript": "^5.6.2"
-// nextjs相关依赖的版本是，我们优先使用客户端组件，所以你给我的代码文件第一行需要有'use client'，当然如果有些地方适合使用服务端组件，你需要把'use client'去掉
+// nextjs相关依赖的版本是，我们优先编写服务端组件，但是在合适的情况下你也应该使用客户端组件，并且在文件头加上'use client'
+// 同时要注意，我不希望一个页面整个都是客户端组件而不利于SEO
 // "next": "14.2.10",
 // 基本的样式我们只使用tailwindcss来做，请不要写内联的css，不要加入<style>标签，不要引入其他文件内的css，我们只使用tailwindcss，tailwindcss版本是
 // "tailwindcss": "^3.4.14",
